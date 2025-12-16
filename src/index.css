@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  };
+
+  --animate-shrink-1_5: shrink 1.5s linear forwards;
+  --animate-shrink-3: shrink 3s linear forwards;
+
+  @keyframes shrink {
+    0% { transform: scale(1); }
+    100% { transform: scale(0); }
+
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply
+      text-neutral-200
+      bg-neutral-800
+      border
+      border-neutral-800
+      hover:text-lime-400
+      hover:border-lime-600
+      hover:cursor-pointer
+  }
+}
