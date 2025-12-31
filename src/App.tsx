@@ -69,7 +69,21 @@ const App = () => {
           </div>
         </>
       ):(
+          <>
+            <div className="absolute bottom-2 left-2 flex gap-1.5 justify-center">
+              <span className="font-mono text-sm text-neutral-400">
+                {"Hit "}
+              </span>
+              <span className="font-mono px-2 text-sm bg-neutral-800 text-neutral-400 rounded-sm">
+                esc
+              </span>
+              <span className="font-mono text-sm text-neutral-400">
+                {" to end game"}
+              </span>
+            </div>
+
           <TargetSpawner/>
+          </>
         )}
     </div>
   );

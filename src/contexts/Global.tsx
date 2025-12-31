@@ -49,7 +49,7 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   // Reactive state (causes re-render)
   // ------------------------
   const [show_menu, setShowMenu] = useState(false);
-  const [show_stats, setShowStats] = useState(false);
+  const [show_stats, setShowStats] = useState(true);
   const [game_active, setGameActive] = useState(false);
 
   const [bg_color, setBgColor] = useState<string | undefined>("#171717");
