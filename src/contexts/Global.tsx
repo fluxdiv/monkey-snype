@@ -5,7 +5,15 @@ import {
   useState
 } from "react";
 
-interface GlobalContextType {
+export interface GameState {
+  total_clicks: number,
+  total_clicks_on_target: number,
+  // total targets seen
+  total_targets: number,
+  total_targets_clicked: number,
+}
+
+interface GlobalContextType extends GameState {
   show_menu: boolean,
   show_stats: boolean,
   game_active: boolean,
@@ -13,12 +21,6 @@ interface GlobalContextType {
   bg_color?: string,
   target_color?: string,
   //--------------------
-  total_clicks: number,
-  total_clicks_on_target: number,
-  // total targets seen
-  total_targets: number,
-  total_targets_clicked: number,
-
   // setters (reactive)
   setShowMenu: (v: boolean) => void;
   setShowStats: (v: boolean) => void;
