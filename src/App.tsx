@@ -161,7 +161,7 @@ const App = () => {
                   </div>
                 </div>
 
-                <div className="mt-4 w-full flex flex-row items-center gap-2">
+                <div className="mt-4 w-full flex flex-row items-center gap-4">
                   <img
                     src={star_trooper}
                     alt="Star Trooper"

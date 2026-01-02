@@ -41,6 +41,9 @@ export const TargetSpawner = () => {
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
+    // Manually set 1 for first target since interval doesn't
+    // get called immediately on start
+    setTotalTargets(1);
     const interval = setInterval(() => {
       const m = get_margins({top: window_height, left: window_width});
       setPos(m);
