@@ -35,7 +35,8 @@ const App = () => {
 
   return (
     <div 
-      className="relative w-screen h-screen overflow-clip flex flex-row-reverse"
+      className="relative w-screen h-screen overflow-clip flex flex-row-reverse
+      cursor-crosshair"
       style={{
         background: `${bg_color ?? "#171717"}`
       }}

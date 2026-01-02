@@ -66,7 +66,7 @@ export const StatsBar = () => {
     <div
       className="fixed top-2 left-1/2 -translate-x-1/2 w-1/3
       flex items-center justify-center gap-8 text-lg p-1
-      rounded-md border border-gray-500"
+      rounded-md border border-neutral-600"
     >
       <div className={`${tdowncolor}`}>
         {tdown}

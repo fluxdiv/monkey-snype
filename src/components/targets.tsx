@@ -93,16 +93,31 @@ const ShrinkingTarget = ({ top, left }: Margins) => {
   }, [downed]);
 
   return (
-    <div
-      onClick={handleClick}
-      className="absolute h-20 w-20 rounded-full animate-shrink-1.5"
-      style={{
-        background: `${target_color ?? "#00FFD0"}`,
-        top: `${top}px`,
-        left: `${left}px`,
-        transformOrigin: "center",
-      }}
-    />
+    <>
+    {downed ? (
+      <div 
+        className="absolute text-lime-400"
+          style={{
+            top: `${top}px`,
+            left: `${left}px`,
+            transformOrigin: "center"
+          }}
+      >
+          +1
+      </div>
+    ): (
+          <div
+            onClick={handleClick}
+            className="absolute h-20 w-20 rounded-full animate-shrink-1.5"
+            style={{
+              background: `${downed ? "transparent" : (target_color ?? "#00FFD0") }`,
+              top: `${top}px`,
+              left: `${left}px`,
+              transformOrigin: "center",
+            }}
+          />
+    )}
+    </>
   );
 };
 
