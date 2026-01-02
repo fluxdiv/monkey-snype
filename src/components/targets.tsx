@@ -74,6 +74,8 @@ export const TargetSpawner = () => {
 const ShrinkingTarget = ({ top, left }: Margins) => {
 
   const [downed, setDowned] = useState(false);
+  const [clickedX, setClickedX] = useState<number | undefined>(undefined);
+  const [clickedY, setClickedY] = useState<number | undefined>(undefined);
 
   const {
     target_color,
@@ -83,40 +85,45 @@ const ShrinkingTarget = ({ top, left }: Margins) => {
     getTotalTargetsClicked
   } = useGlobalContext();
 
-  const handleClick = useMemo(() => (_e: React.MouseEvent<HTMLDivElement>) => {
+  const handleClick = useMemo(() => (e: React.MouseEvent<HTMLDivElement>) => {
+    // setClickedX(e.pageX);
+    // setClickedY(e.pageY);
+    setClickedX(e.clientX);
+    setClickedY(e.clientY);
     console.log("CLICK TARGET");
     if (!downed) {
       setTotalClicksOnTarget(getTotalClicksOnTarget() + 1);
       setTotalTargetsClicked(getTotalTargetsClicked() + 1);
     }
     setDowned(true);
-  }, [downed]);
+  }, [downed, clickedX, clickedY]);
 
   return (
     <>
-    {downed ? (
-      <div 
-        className="absolute text-lime-400"
+      {downed && clickedX && clickedY ? (
+        <div 
+          className="absolute animate-fade-up pointer-events-none"
           style={{
+            color: `${target_color ?? "#00FFD0"}`,
+            top: `${clickedY - 30}px`,
+            left: `${clickedX - 10}px`,
+            // transform: "translate(-50%, -50%)",
+          }}
+        >
+          +1
+        </div>
+      ):(
+        <div
+          onClick={handleClick}
+          className="absolute h-20 w-20 rounded-full animate-shrink-1.5"
+          style={{
+            background: `${downed ? "transparent" : (target_color ?? "#00FFD0") }`,
             top: `${top}px`,
             left: `${left}px`,
-            transformOrigin: "center"
+            transformOrigin: "center",
           }}
-      >
-          +1
-      </div>
-    ): (
-          <div
-            onClick={handleClick}
-            className="absolute h-20 w-20 rounded-full animate-shrink-1.5"
-            style={{
-              background: `${downed ? "transparent" : (target_color ?? "#00FFD0") }`,
-              top: `${top}px`,
-              left: `${left}px`,
-              transformOrigin: "center",
-            }}
-          />
-    )}
+        />
+      )}
     </>
   );
 };
